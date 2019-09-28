@@ -10,5 +10,5 @@
   <div *ngIf="!isTookBonus" class="triangle"></div>
   <button *ngIf="!isAddedToHomeScreen && showButton" (click)="addToHomeScreen()">Добавить на главный экран</button>
   <button *ngIf="isAddedToHomeScreen && !isTookBonus" (click)="takeBonus()">Забрать бонус</button>
-  <img src="/assets/icons/image.svg" />
+  <img *ngIf="isTookBonus" src="/assets/icons/image.svg" />
 </div>
