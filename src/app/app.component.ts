@@ -2,13 +2,16 @@ import { Component, HostListener } from '@angular/core';
 
 @Component({
   selector: 'app-root',
-  template: '<button (click)="addToHomeScreen()" *ngIf="showButton">Add to Home Scree</button>',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.scss']
 
 })
 export class AppComponent {
 
   deferredPrompt: any;
   showButton = false;
+  isAddedToHomeScreen = false;
+  isTookBonus = false;
 
   @HostListener('window:beforeinstallprompt', ['$event'])
   onbeforeinstallprompt(e) {
@@ -18,6 +21,13 @@ export class AppComponent {
     // Stash the event so it can be triggered later.
     this.deferredPrompt = e;
     this.showButton = true;
+  }
+
+  @HostListener('window:appinstalled', ['$event'])
+  appinstalled(e) {
+    console.log(e);
+    e.preventDefault();
+    this.isAddedToHomeScreen = true;
   }
 
 
@@ -37,4 +47,10 @@ export class AppComponent {
         this.deferredPrompt = null;
       });
   }
+
+  takeBonus() {
+    this.isTookBonus = true;
+  }
 }
+
+

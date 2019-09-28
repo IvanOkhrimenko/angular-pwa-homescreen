@@ -1,0 +1,45 @@
+.main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100%;
+}
+
+.text {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 34px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #FFFFFF;
+}
+
+button {
+    height: 60px;
+    width: 90%;
+    background: #FF3232;
+    border-radius: 50px;
+    color: #FFFFFF;
+    font-size: 24px;
+    border-color: #FF3232;
+}
+
+.rectangle {
+    width: 30px;
+    height: 80px;
+    background-color: #fff;
+    border-bottom: none;
+}
+
+.triangle {
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 50px 30px 0 30px;
+    border-color: #fff transparent transparent transparent;
+    margin-bottom: 40px;
+
+}
