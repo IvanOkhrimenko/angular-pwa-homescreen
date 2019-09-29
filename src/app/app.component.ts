@@ -7,11 +7,15 @@ import { Component, HostListener } from '@angular/core';
 
 })
 export class AppComponent {
-
   deferredPrompt: any;
   showButton = false;
   isAddedToHomeScreen = false;
   isTookBonus = false;
+  isStandalone = false;
+
+  constructor() {
+    this.trackStandalone();
+  }
 
   @HostListener('window:beforeinstallprompt', ['$event'])
   onbeforeinstallprompt(e) {
@@ -46,6 +50,13 @@ export class AppComponent {
         }
         this.deferredPrompt = null;
       });
+  }
+
+  trackStandalone() {
+    // called once from app.component
+    if (window.matchMedia('(display-mode: standalone)').matches) {
+      this.isStandalone = true;
+    }
   }
 
   takeBonus() {
