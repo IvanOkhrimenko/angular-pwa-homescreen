@@ -8,7 +8,7 @@
   <p *ngIf="isStandalone && isTookBonus" class="text">Бонус начисляется...</p>
   <div *ngIf="!isTookBonus" class="rectangle"></div>
   <div *ngIf="!isTookBonus" class="triangle"></div>
-  <button *ngIf="showButton" (click)="addToHomeScreen()">Добавить на главный экран</button>
-  <button *ngIf="isAddedToHomeScreen && !isTookBonus && !showButton" (click)="takeBonus()">Забрать бонус</button>
+  <button *ngIf="!isStandalone && showButton" (click)="addToHomeScreen()">Добавить на главный экран</button>
+  <button *ngIf="isStandalone && !isTookBonus" (click)="takeBonus()">Забрать бонус</button>
   <img *ngIf="isTookBonus" src="/assets/icons/image.svg" />
 </div>
