@@ -1,4 +1,5 @@
 import { Component, HostListener } from '@angular/core';
+import { GoogleAnalyticsService } from './google-analytics.service';
 
 @Component({
   selector: 'app-root',
@@ -13,7 +14,7 @@ export class AppComponent {
   isTookBonus = false;
   isStandalone = false;
 
-  constructor() {
+  constructor(private googleAnalyticsService: GoogleAnalyticsService) {
     this.trackStandalone();
   }
 
@@ -50,6 +51,8 @@ export class AppComponent {
         }
         this.deferredPrompt = null;
       });
+
+    this.googleAnalyticsService.eventEmitter("buttonclick", "AddToHomePage");
   }
 
   trackStandalone() {
@@ -61,6 +64,8 @@ export class AppComponent {
 
   takeBonus() {
     this.isTookBonus = true;
+    this.googleAnalyticsService.eventEmitter("buttonclick", "TakeBonus");
+
   }
 }
 
