@@ -41,6 +41,7 @@ export class AppComponent {
 
   addToHomeScreen() {
     // hide our user interface that shows our A2HS button
+    this.showButton ? this.googleAnalyticsService.eventEmitter("buttonclick", "AddToHomePage") : null;
     this.showButton = false;
     // Show the prompt
     this.deferredPrompt.prompt();
@@ -54,8 +55,6 @@ export class AppComponent {
         }
         this.deferredPrompt = null;
       });
-
-    this.googleAnalyticsService.eventEmitter("buttonclick", "AddToHomePage");
   }
 
   trackStandalone() {
@@ -66,9 +65,8 @@ export class AppComponent {
   }
 
   takeBonus() {
+    this.isTookBonus ? this.googleAnalyticsService.eventEmitter("buttonclick", "TakeBonus") : null;
     this.isTookBonus = true;
-    this.googleAnalyticsService.eventEmitter("buttonclick", "TakeBonus");
-
   }
 }
 
