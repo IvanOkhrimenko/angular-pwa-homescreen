@@ -1,12 +1,14 @@
 import { Component, HostListener } from '@angular/core';
 import { GoogleAnalyticsService } from './google-analytics.service';
 
+declare let ga: Function;
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 
 })
+
 export class AppComponent {
   deferredPrompt: any;
   showButton = false;
@@ -15,6 +17,7 @@ export class AppComponent {
   isStandalone = false;
 
   constructor(private googleAnalyticsService: GoogleAnalyticsService) {
+    ga('send', 'pageview');
     this.trackStandalone();
   }
 
