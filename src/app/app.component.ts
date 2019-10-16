@@ -69,7 +69,7 @@ export class AppComponent {
   }
 
   takeBonus() {
-    this.isTookBonus ? this.googleAnalyticsService.eventEmitter("buttonclick", "StartDialog") : null;
+    this.isTookBonus ? null : this.googleAnalyticsService.eventEmitter("buttonclick", "StartDialog");
     this.isTookBonus = true;
   }
 }
