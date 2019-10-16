@@ -33,6 +33,7 @@ export class AppComponent {
 
   @HostListener('window:appinstalled', ['$event'])
   appinstalled(e) {
+    this.googleAnalyticsService.eventEmitter("systemEvents", "User installed app");
     console.log(e);
     e.preventDefault();
     this.isAddedToHomeScreen = true;
@@ -49,8 +50,10 @@ export class AppComponent {
     this.deferredPrompt.userChoice
       .then((choiceResult) => {
         if (choiceResult.outcome === 'accepted') {
+          this.googleAnalyticsService.eventEmitter("systemEvents", "User accepted the prompt");
           console.log('User accepted the A2HS prompt');
         } else {
+          this.googleAnalyticsService.eventEmitter("systemEvents", "User dismissed the prompt");
           console.log('User dismissed the A2HS prompt');
         }
         this.deferredPrompt = null;
@@ -60,12 +63,13 @@ export class AppComponent {
   trackStandalone() {
     // called once from app.component
     if (window.matchMedia('(display-mode: standalone)').matches) {
+      this.googleAnalyticsService.eventEmitter("systemEvents", "User open from app");
       this.isStandalone = true;
     }
   }
 
   takeBonus() {
-    this.isTookBonus ? this.googleAnalyticsService.eventEmitter("buttonclick", "TakeBonus") : null;
+    this.isTookBonus ? this.googleAnalyticsService.eventEmitter("buttonclick", "StartDialog") : null;
     this.isTookBonus = true;
   }
 }

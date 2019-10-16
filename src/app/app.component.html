@@ -1,14 +1,14 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <div style="text-align:center" class="main">
 
-  <p *ngIf="!isStandalone" class="text">Добавь приложение на главный
-    экран и забирай бонус</p>
-  <p *ngIf="isStandalone && !isTookBonus" class="text">Нажми на кнопку и
-    забери свой бонус</p>
-  <p *ngIf="isStandalone && isTookBonus" class="text">Бонус начисляется...</p>
+  <p *ngIf="!isStandalone" class="text">Добавь приложение на главный экран и я напишу тебе в течение 5-ти минут
+  </p>
+  <p *ngIf="isStandalone && !isTookBonus" class="text">Нажми на кнопку чтобы начать диалог
+  </p>
+  <p *ngIf="isStandalone && isTookBonus" class="text">Заявка обрабатывается</p>
   <div *ngIf="!isTookBonus" class="rectangle"></div>
   <div *ngIf="!isTookBonus" class="triangle"></div>
   <button *ngIf="!isStandalone && showButton" (click)="addToHomeScreen()">Добавить на главный экран</button>
-  <button *ngIf="isStandalone && !isTookBonus" (click)="takeBonus()">Забрать бонус</button>
+  <button *ngIf="isStandalone && !isTookBonus" (click)="takeBonus()">Начать диалог</button>
   <img *ngIf="isTookBonus" src="/assets/icons/image.svg" />
 </div>
